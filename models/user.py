@@ -15,5 +15,7 @@ class User(Model):
     is_searcher = type_of_user.flag(0)
     is_creator = type_of_user.flag(1)
 
+    created_at = DateTimeField(default=datetime.now)
+
     class Meta:
         database = db
