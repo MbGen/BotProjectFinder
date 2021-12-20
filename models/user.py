@@ -3,9 +3,19 @@ from peewee import *
 from datetime import datetime
 
 
-class User(Model):
+class TypeOfUser(Enum):
+    searcher = 1
+    creator = 2
+
+
+class Authorization(Model):
     id = IntegerField(primary_key=True)
-    created_at = DateTimeField(default=datetime.now)
+    nickname = CharField()
+    age = IntegerField()
+    theme = CharField()
+    skills = CharField()
+    about = CharField()
+    type_of_user: TypeOfUser = SmallIntegerField(db_column="typeOfUser")
 
     class Meta:
         database = db
