@@ -10,3 +10,8 @@ async def bot_start(msg: types.Message):
     await msg.answer('''
 👋 Привет, {} 
 '''.format(msg.from_user.first_name))
+
+
+async def get_user_info():
+    pass
+
