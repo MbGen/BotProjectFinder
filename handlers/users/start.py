@@ -2,6 +2,7 @@ from aiogram import types, filters
 from aiogram.dispatcher.filters.builtin import CommandStart
 from models.user import User
 from loader import dp, bot
+from .. import states
 
 
 @dp.message_handler(CommandStart(), filters.ChatTypeFilter(types.ChatType.PRIVATE))
