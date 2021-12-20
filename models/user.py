@@ -5,10 +5,10 @@ from datetime import datetime
 
 class User(Model):
     id = IntegerField(primary_key=True, null=False, index=True, unique=True)
-    nickname = CharField(default=None, unique=True)
-    age = IntegerField(default=None)
-    theme = CharField(default=None)
-    skills = CharField(default=None)
+    nickname = CharField(default=None, unique=True, null=True)
+    age = IntegerField(default=None, null=True)
+    theme = CharField(default=None, null=True)
+    skills = CharField(default=None, null=True)
     about = CharField(default=None, null=True)
     type_of_user = BooleanField(db_column="typeOfUser")
 
