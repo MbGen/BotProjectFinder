@@ -4,8 +4,8 @@ from datetime import datetime
 
 
 class User(Model):
-    id = IntegerField(primary_key=True, null=False)
-    nickname = CharField(default=None)
+    id = IntegerField(primary_key=True, null=False, index=True, unique=True)
+    nickname = CharField(default=None, unique=True)
     age = IntegerField(default=None)
     theme = CharField(default=None)
     skills = CharField(default=None)
