@@ -1,6 +1,6 @@
 from aiogram.dispatcher.filters.state import State, StatesGroup
 
-#TODO: разбить по файлам
+
 class Authorization(StatesGroup):
     waiting_for_nick = State()
     waiting_for_age = State()
