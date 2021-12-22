@@ -7,7 +7,7 @@ class Authorization:
 
     @staticmethod
     def authorize_kb() -> InlineKeyboardMarkup:
-        authorize_inline_btn = InlineKeyboardButton("Заполнить информацию о себе",
+        authorize_inline_btn = InlineKeyboardButton(text="Заполнить информацию о себе",
                                                     callback_data=CallbackDataEnum.AUTHORIZATION.value)
-        authorization_inline_kb = InlineKeyboardMarkup().add(authorize_inline_btn)
+        authorization_inline_kb = InlineKeyboardMarkup(row_width=1).add(authorize_inline_btn)
         return authorization_inline_kb
