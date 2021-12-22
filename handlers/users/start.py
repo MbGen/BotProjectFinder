@@ -57,6 +57,7 @@ async def get_skills(msg: types.Message, state: FSMContext) -> None:
 async def get_about(msg: types.Message, state: FSMContext) -> None:
     await msg.answer("Отлично, теперь выберите вы будете искать проект, или его создавать")
     await state.update_data(about=msg.text)
+    # TODO: добавить кнопки с выбором типа юзера
     await Authorization.waiting_for_type_of_user.set()
 
 
