@@ -1,11 +1,23 @@
 from aiogram import types
-from loader import dp
+from loader import dp, bot
 from aiogram.dispatcher import FSMContext
 from states.user.authorization import Authorization
+from keyboards import inline
 
 
-@dp.message_handler(state=Authorization.waiting_for_type_of_user)
-async def get_type_of_user(msg: types.Message, state: FSMContext) -> None:
-    await state.update_data(type_of_user=msg.text)
-    print(await state.get_data())
-    await state.finish()
+callback_searcher_chosen = inline.callback_data.CallbackData.SEARCHER
+callback_creator_chosen = inline.callback_data.CallbackData.CREATOR
+
+
+@dp.callback_query_handler(text_contains=callback_searcher_chosen)
+async def user_type_searcher(callback_query: types.CallbackQuery) -> None:
+    # TODO: добавить в БД тип юзера
+    await bot.send_message(callback_query.from_user.id, "Вы успешно закончили регистрацию")
+    pass
+
+
+@dp.callback_query_handler(text_contains=callback_creator_chosen)
+async def user_type_searcher(callback_query: types.CallbackQuery) -> None:
+    # TODO: добавить в БД тип юзера
+    await bot.send_message(callback_query.from_user.id, "Вы успешно закончили регистрацию")
+    pass

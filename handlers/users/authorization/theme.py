@@ -1,12 +1,24 @@
 from aiogram import types
-from loader import dp
-from aiogram.dispatcher import FSMContext
+from loader import dp, bot
 from states.user.authorization import Authorization
+from keyboards import inline
 
 
-@dp.message_handler(state=Authorization.waiting_for_age)
-async def get_age(msg: types.Message, state: FSMContext) -> None:
-    await msg.answer(f"Отлично, теперь выберите интересующую вас тему")
-    await state.update_data(age=msg.text)
-    # TODO: добавить кнопки с темами
-    await Authorization.waiting_for_theme.set()
+callback_bots_chosen  = inline.callback_data.CallbackData.BOTS
+callback_web_chosen = inline.callback_data.CallbackData.WEB
+
+
+@dp.callback_query_handler(text_contains=callback_bots_chosen)
+async def bots_theme(callback_query: types.CallbackQuery) -> None:
+    # TODO: добавить тему в БД
+    await bot.send_message(callback_query.from_user.id,
+                           f"Вы выбрали тему {callback_bots_chosen}, теперь напишите что вы умеете")
+    await Authorization.waiting_for_skills.set()
+
+
+@dp.callback_query_handler(text_contains=callback_web_chosen)
+async def web_theme(callback_query: types.CallbackQuery) -> None:
+    # TODO: добавить тему в БД
+    await bot.send_message(callback_query.from_user.id,
+                                f"Вы выбрали тему {callback_web_chosen}, теперь напишите что вы умеете")
+    await Authorization.waiting_for_skills.set()

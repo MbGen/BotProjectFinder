@@ -4,7 +4,7 @@ from models.user import User
 from loader import dp
 from keyboards import inline
 
-keyboard_auth = inline.callbacks.Authorization.authorize_kb()
+keyboard_auth = inline.callbacks.AuthorizationKB.authorize_kb()
 
 
 @dp.message_handler(CommandStart(), filters.ChatTypeFilter(types.ChatType.PRIVATE))
