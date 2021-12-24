@@ -1,5 +1,2 @@
-
-class UserInfo:
-    USER_INFO = {}
-
+USER_INFO = {}
 # TODO: Куда-то запихнуть этот файл

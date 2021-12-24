@@ -1,5 +1,5 @@
 from typing import final, Union
-from models.user import User
+
 
 @final
 class Validator:
