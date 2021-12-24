@@ -4,13 +4,17 @@ from aiogram.dispatcher import FSMContext
 from states.user.authorization import Authorization
 from utils.validation.data_validation import Validator
 from keyboards.inline.callbacks import AuthorizationKB
-from .user_info import USER_INFO
+from models.user import User
 
 
 @dp.message_handler(state=Authorization.waiting_for_age)
 async def get_age(msg: types.Message, state: FSMContext) -> None:
     if Validator.is_valid_age(msg.text):
-        USER_INFO.update(age=msg.text)
+        await state.update_data(age=msg.text)
+        user_cursor = User.get(User.id == msg.from_user.id) 
+        user_cursor.age = msg.text 
+        user_cursor.save()
+        # TODO: добавить в БД state.get_data()
         await state.finish()
 
         await msg.answer(f"Отлично, теперь выберите интересующую вас тему",
