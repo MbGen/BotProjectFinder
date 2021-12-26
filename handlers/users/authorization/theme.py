@@ -5,8 +5,8 @@ from keyboards import inline
 from models.user import User
 
 
-callback_bots_chosen  = inline.callback_data.CallbackData.BOTS
-callback_web_chosen = inline.callback_data.CallbackData.WEB
+callback_bots_chosen  = inline.callback_data.ThemeCallback.BOTS
+callback_web_chosen = inline.callback_data.ThemeCallback.WEB
 
 
 @dp.callback_query_handler(text_contains=callback_bots_chosen)

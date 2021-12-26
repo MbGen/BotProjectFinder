@@ -4,7 +4,7 @@ from keyboards import inline
 from states.user.authorization import Authorization
 
 
-callback_auth = inline.callback_data.CallbackData.AUTHORIZATION
+callback_auth = inline.callback_data.AuthorizationCallback.AUTHORIZATION
 
 
 @dp.callback_query_handler(text_contains=callback_auth)

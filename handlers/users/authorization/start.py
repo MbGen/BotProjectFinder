@@ -5,6 +5,7 @@ from loader import dp
 from aiogram.dispatcher import FSMContext
 from keyboards import inline
 
+
 keyboard_auth = inline.callbacks.AuthorizationKB.authorize_kb()
 
 
