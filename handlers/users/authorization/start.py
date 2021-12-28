@@ -6,7 +6,7 @@ from aiogram.dispatcher import FSMContext
 from keyboards import inline
 
 
-keyboard_auth = inline.callbacks.AuthorizationKB.authorize_kb()
+keyboard_auth = inline.callbacks.AuthorizationKB.get_authorize_kb()
 
 
 @dp.message_handler(CommandStart(), filters.ChatTypeFilter(types.ChatType.PRIVATE), state='*')

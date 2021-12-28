@@ -20,5 +20,12 @@ class TypeOfUserCallback:
 
 
 @final
-class MenuCallbacks:
+class MenuCallback:
     LIST_OF_PROJECTS: Final[str] = "lst_of_proj"
+    MAIN_MENU: Final[str] = "main_menu"
+    PROFILE: Final[str] = "profile"
+
+
+@final
+class ProfileCallback:
+    ABOUT_ME: Final[str] = "about_me"

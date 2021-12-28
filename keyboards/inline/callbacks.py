@@ -1,19 +1,19 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from .callback_data import AuthorizationCallback, ThemeCallback, TypeOfUserCallback, MenuCallbacks
+from .callback_data import AuthorizationCallback, ThemeCallback, TypeOfUserCallback, MenuCallback, ProfileCallback
 
 
 class AuthorizationKB:
 
     @staticmethod
-    def authorize_kb() -> InlineKeyboardMarkup:
-        authorize_inline_btn = InlineKeyboardButton(text="Заполнить информацию о себе",
+    def get_authorize_kb() -> InlineKeyboardMarkup:
+        authorize_inline_btn = InlineKeyboardButton(text="🧑Заполнить информацию о себе",
                                                     callback_data=AuthorizationCallback.AUTHORIZATION)
 
         authorization_inline_kb = InlineKeyboardMarkup(row_width=1).add(authorize_inline_btn)
         return authorization_inline_kb
 
     @staticmethod
-    def choice_theme_kb() -> InlineKeyboardMarkup:
+    def get_choice_theme_kb() -> InlineKeyboardMarkup:
         theme_inline_btns = (
             InlineKeyboardButton(text="Боты", callback_data=ThemeCallback.BOTS),
             InlineKeyboardButton(text="Веб", callback_data=ThemeCallback.WEB),
@@ -23,7 +23,7 @@ class AuthorizationKB:
         return theme_inline_kb
 
     @staticmethod
-    def choice_type_of_user() -> InlineKeyboardMarkup:
+    def get_choice_type_of_user_kb() -> InlineKeyboardMarkup:
         type_of_user_btns = (
             InlineKeyboardButton(text="Искать", callback_data=TypeOfUserCallback.SEARCHER),
             InlineKeyboardButton(text="Создавать", callback_data=TypeOfUserCallback.CREATOR),
@@ -34,10 +34,21 @@ class AuthorizationKB:
 
 class MenuKB:
     @staticmethod
-    def main_menu() -> InlineKeyboardMarkup:
+    def get_menu_kb() -> InlineKeyboardMarkup:
         main_menu_btns = (
-            InlineKeyboardButton(text="Список проектов", callback_data=MenuCallbacks.LIST_OF_PROJECTS),
+            InlineKeyboardButton(text="📜Список проектов", callback_data=MenuCallback.LIST_OF_PROJECTS),
+            InlineKeyboardButton(text="🙋‍♂️Профиль", callback_data=MenuCallback.PROFILE)
         )
 
-        main_menu_kb = InlineKeyboardMarkup(row_width=0.5).add(*main_menu_btns)
+        main_menu_kb = InlineKeyboardMarkup().add(*main_menu_btns)
         return main_menu_kb
+
+    @staticmethod
+    def get_profile_kb() -> InlineKeyboardMarkup:
+        profile_btns = (
+            InlineKeyboardButton(text="Мое описание", callback_data=ProfileCallback.ABOUT_ME),
+            InlineKeyboardButton(text="Меню", callback_data=MenuCallback.MAIN_MENU)
+        )
+
+        profile_kb = InlineKeyboardMarkup().add(*profile_btns)
+        return profile_kb

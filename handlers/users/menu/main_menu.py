@@ -1,10 +1,9 @@
-from keyboards import inline
 from loader import dp
 from aiogram import types, filters
 from keyboards import inline
+from keyboards.inline.callback_data import MenuCallback
 
-
-keyboard_menu = inline.callbacks.MenuKB.main_menu()
+keyboard_menu = inline.callbacks.MenuKB.get_menu_kb()
 
 
 @dp.message_handler(filters.ChatTypeFilter(types.ChatType.PRIVATE), commands=["menu"])
