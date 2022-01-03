@@ -5,6 +5,6 @@ from os import getenv
 
 load_dotenv()
 
-bot = Bot(token=getenv('botToken'), parse_mode=types.ParseMode.HTML)
+bot = Bot(token=getenv('botToken'), parse_mode=types.ParseMode.MARKDOWN_V2)
 storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
