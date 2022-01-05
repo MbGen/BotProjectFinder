@@ -49,20 +49,20 @@ class ProfileKB:
     @staticmethod
     def get_creator_kb() -> InlineKeyboardMarkup:
         creator_btns = (
-            InlineKeyboardButton(text="Мое описание", callback_data=ProfileCallback.ABOUT_ME),
-            InlineKeyboardButton(text="Создать проект", callback_data=ProfileCallback.CREATE_PROJ),
-            InlineKeyboardButton(text="Меню", callback_data=MenuCallback.MAIN_MENU)
+            InlineKeyboardButton(text="🏷️Мое описание", callback_data=ProfileCallback.ABOUT_ME),
+            InlineKeyboardButton(text="✏️Создать проект", callback_data=ProfileCallback.CREATE_PROJ),
+            InlineKeyboardButton(text="📖Меню", callback_data=MenuCallback.MAIN_MENU)
         )
 
-        creator_kb = InlineKeyboardMarkup().add(*creator_btns)
+        creator_kb = InlineKeyboardMarkup(row_width=2).add(*creator_btns)
         return creator_kb
 
     @staticmethod
     def get_searcher_kb() -> InlineKeyboardMarkup:
         searcher_btns = (
-            InlineKeyboardButton(text="Мое описание", callback_data=ProfileCallback.ABOUT_ME),
-            InlineKeyboardButton(text="Меню", callback_data=MenuCallback.MAIN_MENU)
+            InlineKeyboardButton(text="🏷️Мое описание", callback_data=ProfileCallback.ABOUT_ME),
+            InlineKeyboardButton(text="📖Меню", callback_data=MenuCallback.MAIN_MENU)
         )
 
-        searcher_kb = InlineKeyboardMarkup().add(*searcher_btns)
+        searcher_kb = InlineKeyboardMarkup(row_width=1).add(*searcher_btns)
         return searcher_kb
