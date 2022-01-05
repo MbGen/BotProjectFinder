@@ -1,6 +1,9 @@
-from utils.db_api import db
+import sys
+import os
+sys.path.append(os.path.abspath(".."))
 from peewee import *
 from datetime import datetime
+from utils.db_api import db
 
 
 class User(Model):
@@ -10,11 +13,7 @@ class User(Model):
     theme = CharField(default=None, null=True)
     skills = CharField(default=None, null=True)
     about = CharField(default=None, null=True)
-    type_of_user = BitField(db_column="typeOfUser")
-
-    is_searcher = type_of_user.flag(0)
-    is_creator = type_of_user.flag(1)
-
+    is_creator = BooleanField(default=False, null=False)
     created_at = DateTimeField(default=datetime.now)
 
     class Meta:

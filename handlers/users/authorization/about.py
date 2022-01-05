@@ -14,5 +14,4 @@ async def get_about(msg: types.Message, state: FSMContext) -> None:
     await state.update_data(about=msg.text)
     await msg.answer("Отлично, теперь выберите вы будете искать проект, или его создавать",
                      reply_markup=AuthorizationKB.get_choice_type_of_user_kb())
-    # TODO: добавить в БД state.get_data()
     await state.finish()

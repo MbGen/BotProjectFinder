@@ -29,3 +29,4 @@ class MenuCallback:
 @final
 class ProfileCallback:
     ABOUT_ME: Final[str] = "about_me"
+    CREATE_PROJ: Final[str] = "create_proj"

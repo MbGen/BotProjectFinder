@@ -10,19 +10,19 @@ callback_searcher_chosen = inline.callback_data.TypeOfUserCallback.SEARCHER
 callback_creator_chosen = inline.callback_data.TypeOfUserCallback.CREATOR
 
 
-@dp.callback_query_handler(text_contains=callback_searcher_chosen)
-async def user_type_searcher(callback_query: types.CallbackQuery) -> None:
-    user_cursor = User.get(User.id == callback_query.from_user.id)
-    user_cursor.type_of_user = 0
-    user_cursor.save()
-    await bot.send_message(callback_query.from_user.id, "Вы успешно закончили регистрацию")
-    pass
-
-
 @dp.callback_query_handler(text_contains=callback_creator_chosen)
 async def user_type_searcher(callback_query: types.CallbackQuery) -> None:
     user_cursor = User.get(User.id == callback_query.from_user.id)
-    user_cursor.type_of_user = 1
+    user_cursor.is_creator = True
     user_cursor.save()
     await bot.send_message(callback_query.from_user.id, "Вы успешно закончили регистрацию")
-    pass
+
+
+@dp.callback_query_handler(text_contains=callback_searcher_chosen)
+async def user_type_searcher(callback_query: types.CallbackQuery) -> None:
+    user_cursor = User.get(User.id == callback_query.from_user.id)
+    user_cursor.is_creator = False
+    user_cursor.save()
+    await bot.send_message(callback_query.from_user.id,
+        "Вы успешно закончили регистрацию можете открыть меню командой /menu"
+    )

@@ -32,6 +32,7 @@ class AuthorizationKB:
         type_of_user_kb = InlineKeyboardMarkup(row_width=1).add(*type_of_user_btns)
         return type_of_user_kb
 
+
 class MenuKB:
     @staticmethod
     def get_menu_kb() -> InlineKeyboardMarkup:
@@ -43,12 +44,25 @@ class MenuKB:
         main_menu_kb = InlineKeyboardMarkup().add(*main_menu_btns)
         return main_menu_kb
 
+
+class ProfileKB:
     @staticmethod
-    def get_profile_kb() -> InlineKeyboardMarkup:
-        profile_btns = (
+    def get_creator_kb() -> InlineKeyboardMarkup:
+        creator_btns = (
+            InlineKeyboardButton(text="Мое описание", callback_data=ProfileCallback.ABOUT_ME),
+            InlineKeyboardButton(text="Создать проект", callback_data=ProfileCallback.CREATE_PROJ),
+            InlineKeyboardButton(text="Меню", callback_data=MenuCallback.MAIN_MENU)
+        )
+
+        creator_kb = InlineKeyboardMarkup().add(*creator_btns)
+        return creator_kb
+
+    @staticmethod
+    def get_searcher_kb() -> InlineKeyboardMarkup:
+        searcher_btns = (
             InlineKeyboardButton(text="Мое описание", callback_data=ProfileCallback.ABOUT_ME),
             InlineKeyboardButton(text="Меню", callback_data=MenuCallback.MAIN_MENU)
         )
 
-        profile_kb = InlineKeyboardMarkup().add(*profile_btns)
-        return profile_kb
+        searcher_kb = InlineKeyboardMarkup().add(*searcher_btns)
+        return searcher_kb

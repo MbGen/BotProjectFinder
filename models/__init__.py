@@ -1,3 +1,6 @@
-from . import user
+import sys
+import os
+sys.path.append(os.path.abspath(".."))
+from models.user import User
 
-user.User.create_table()
+User.create_table()
