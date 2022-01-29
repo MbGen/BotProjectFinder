@@ -1,6 +1,5 @@
 from aiogram import types
 from loader import dp, bot
-from aiogram.dispatcher import FSMContext
 from states.user.authorization import Authorization
 from keyboards import inline, reply
 from models.user import User

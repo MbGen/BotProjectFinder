@@ -1,9 +1,11 @@
 import sys
 import os
+
 sys.path.append(os.path.abspath(".."))
+
 from peewee import *
 from datetime import datetime
-from utils.db_api import db
+from utils.db_api import user_db
 
 
 class User(Model):
@@ -17,4 +19,4 @@ class User(Model):
     created_at = DateTimeField(default=datetime.now)
 
     class Meta:
-        database = db
+        database = user_db

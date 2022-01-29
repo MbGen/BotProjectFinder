@@ -11,7 +11,6 @@ async def get_about(msg: types.Message, state: FSMContext) -> None:
     user_cursor = User.get(User.id == msg.from_user.id) 
     user_cursor.about = msg.text 
     user_cursor.save()
-    await state.update_data(about=msg.text)
     await msg.answer("Отлично, теперь выберите вы будете искать проект, или его создавать",
                      reply_markup=AuthorizationKB.get_choice_type_of_user_kb())
     await state.finish()

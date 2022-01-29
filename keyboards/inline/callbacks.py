@@ -1,5 +1,5 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from .callback_data import AuthorizationCallback, ThemeCallback, TypeOfUserCallback, MenuCallback, ProfileCallback
+from .callback_data import *
 
 
 class AuthorizationKB:
@@ -15,11 +15,11 @@ class AuthorizationKB:
     @staticmethod
     def get_choice_theme_kb() -> InlineKeyboardMarkup:
         theme_inline_btns = (
-            InlineKeyboardButton(text="Боты", callback_data=ThemeCallback.BOTS),
-            InlineKeyboardButton(text="Веб", callback_data=ThemeCallback.WEB),
+            InlineKeyboardButton(text="Боты", callback_data=ThemeAuthCallback.AUTH_BOTS),
+            InlineKeyboardButton(text="Веб", callback_data=ThemeAuthCallback.AUTH_WEB),
         )
 
-        theme_inline_kb = InlineKeyboardMarkup(row_width=1).add(*theme_inline_btns)
+        theme_inline_kb = InlineKeyboardMarkup(row_width=2).add(*theme_inline_btns)
         return theme_inline_kb
 
     @staticmethod
@@ -51,18 +51,32 @@ class ProfileKB:
         creator_btns = (
             InlineKeyboardButton(text="🏷️Мое описание", callback_data=ProfileCallback.ABOUT_ME),
             InlineKeyboardButton(text="✏️Создать проект", callback_data=ProfileCallback.CREATE_PROJ),
+            InlineKeyboardButton(text="Мой проект", callback_data=ProfileCallback.MY_PROJ_CREATOR),
             InlineKeyboardButton(text="📖Меню", callback_data=MenuCallback.MAIN_MENU)
         )
 
-        creator_kb = InlineKeyboardMarkup(row_width=2).add(*creator_btns)
+        creator_kb = InlineKeyboardMarkup(row_width=3).add(*creator_btns)
         return creator_kb
 
     @staticmethod
     def get_searcher_kb() -> InlineKeyboardMarkup:
         searcher_btns = (
             InlineKeyboardButton(text="🏷️Мое описание", callback_data=ProfileCallback.ABOUT_ME),
+            InlineKeyboardButton(text="Мой проект", callback_data=ProfileCallback.MY_PROJ_SEARCHER),
             InlineKeyboardButton(text="📖Меню", callback_data=MenuCallback.MAIN_MENU)
         )
 
-        searcher_kb = InlineKeyboardMarkup(row_width=1).add(*searcher_btns)
+        searcher_kb = InlineKeyboardMarkup(row_width=2).add(*searcher_btns)
         return searcher_kb
+
+
+class ProjectCreationKB:
+    @staticmethod
+    def get_themes_kb() -> InlineKeyboardMarkup:
+        themes_btns = (
+            InlineKeyboardButton(text="Боты", callback_data=ThemeCreateCallback.CREATE_BOTS),
+            InlineKeyboardButton(text="Веб", callback_data=ThemeCreateCallback.CREATE_WEB),
+        )
+
+        themes_kb = InlineKeyboardMarkup(row_width=2).add(*themes_btns)
+        return themes_kb
