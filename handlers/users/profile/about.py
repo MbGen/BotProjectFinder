@@ -10,13 +10,9 @@ from models.user import User
 async def about_me(callback_query: types.CallbackQuery) -> None:
     user_cursor = User.get(id=callback_query.from_user.id)
     await bot.send_message(callback_query.from_user.id,
-                           fmt.text(
-                               fmt.code("Ваш никнейм - ", user_cursor.nickname),
-                               fmt.code("Ваш возраст - ", user_cursor.age),
-                               fmt.code("Ваша выбранная тема - ", user_cursor.theme),
-                               fmt.code(f"Что вы умеете - ", user_cursor.skills),
-                               fmt.code(f"О вас - ",
-                                        user_cursor.about if user_cursor.about else 'Вы ничего о себе не писали'),
-                               sep="\n"
-                           )
+                           f"<strong>Ваш никнейм</strong> - <em>{user_cursor.nickname}</em>\n"
+                           f"<strong>Ваш возраст</strong> - <em>{user_cursor.age}</em>\n"
+                           f"<strong>Ваша выбранная тема</strong> - <em>{user_cursor.theme}</em>\n"
+                           f"<strong>Что вы умеете</strong> - <em>{user_cursor.skills}</em>\n"
+                           f"О вас - {user_cursor.about if user_cursor.about else 'Вы ничего о себе не писали'}"
                            )

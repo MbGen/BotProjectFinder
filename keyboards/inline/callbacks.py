@@ -15,8 +15,8 @@ class AuthorizationKB:
     @staticmethod
     def get_choice_theme_kb() -> InlineKeyboardMarkup:
         theme_inline_btns = (
-            InlineKeyboardButton(text="Боты", callback_data=ThemeAuthCallback.AUTH_BOTS),
-            InlineKeyboardButton(text="Веб", callback_data=ThemeAuthCallback.AUTH_WEB),
+            InlineKeyboardButton(text="🤖Боты", callback_data=ThemeAuthCallback.AUTH_BOTS),
+            InlineKeyboardButton(text="🌐Веб", callback_data=ThemeAuthCallback.AUTH_WEB),
         )
 
         theme_inline_kb = InlineKeyboardMarkup(row_width=2).add(*theme_inline_btns)
@@ -25,8 +25,8 @@ class AuthorizationKB:
     @staticmethod
     def get_choice_type_of_user_kb() -> InlineKeyboardMarkup:
         type_of_user_btns = (
-            InlineKeyboardButton(text="Искать", callback_data=TypeOfUserCallback.SEARCHER),
-            InlineKeyboardButton(text="Создавать", callback_data=TypeOfUserCallback.CREATOR),
+            InlineKeyboardButton(text="🔍Искать", callback_data=TypeOfUserCallback.SEARCHER),
+            InlineKeyboardButton(text="🛠️Создавать", callback_data=TypeOfUserCallback.CREATOR),
         )
 
         type_of_user_kb = InlineKeyboardMarkup(row_width=1).add(*type_of_user_btns)
@@ -51,7 +51,7 @@ class ProfileKB:
         creator_btns = (
             InlineKeyboardButton(text="🏷️Мое описание", callback_data=ProfileCallback.ABOUT_ME),
             InlineKeyboardButton(text="✏️Создать проект", callback_data=ProfileCallback.CREATE_PROJ),
-            InlineKeyboardButton(text="Мой проект", callback_data=ProfileCallback.MY_PROJ_CREATOR),
+            InlineKeyboardButton(text="👀Мой проект", callback_data=ProfileCallback.MY_PROJ_CREATOR),
             InlineKeyboardButton(text="📖Меню", callback_data=MenuCallback.MAIN_MENU)
         )
 
@@ -62,7 +62,7 @@ class ProfileKB:
     def get_searcher_kb() -> InlineKeyboardMarkup:
         searcher_btns = (
             InlineKeyboardButton(text="🏷️Мое описание", callback_data=ProfileCallback.ABOUT_ME),
-            InlineKeyboardButton(text="Мой проект", callback_data=ProfileCallback.MY_PROJ_SEARCHER),
+            InlineKeyboardButton(text="👀Мой проект", callback_data=ProfileCallback.MY_PROJ_SEARCHER),
             InlineKeyboardButton(text="📖Меню", callback_data=MenuCallback.MAIN_MENU)
         )
 
@@ -74,8 +74,8 @@ class ProjectCreationKB:
     @staticmethod
     def get_themes_kb() -> InlineKeyboardMarkup:
         themes_btns = (
-            InlineKeyboardButton(text="Боты", callback_data=ThemeCreateCallback.CREATE_BOTS),
-            InlineKeyboardButton(text="Веб", callback_data=ThemeCreateCallback.CREATE_WEB),
+            InlineKeyboardButton(text="🤖Боты", callback_data=ThemeCreateCallback.CREATE_BOTS),
+            InlineKeyboardButton(text="🌐Веб", callback_data=ThemeCreateCallback.CREATE_WEB),
         )
 
         themes_kb = InlineKeyboardMarkup(row_width=2).add(*themes_btns)

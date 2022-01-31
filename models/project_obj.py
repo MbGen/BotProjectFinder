@@ -15,11 +15,20 @@ class ProjectObj:
         self.required_partners = required_partners
 
     def __repr__(self) -> str:
-        pattern = """
-        <strong> Создатель - {0}</strong>
-        """.format(self.creator)
+        pattern = "<strong>Создатель - {0}</strong>\n" \
+                  "\n" \
+                  "<strong>Тема проекта - {1}</strong>\n" \
+                  "\n" \
+                  "<strong>Количество участников - {2}/{3}</strong>\n" \
+                  "\n" \
+                  "<strong>Описание:</strong>" \
+                  "{4}".format(self.creator,
+                               self.theme,
+                               self.current_partners,
+                               self.required_partners,
+                               self.normalize_descripion())
 
-        return repr(pattern)
+        return pattern
 
     def normalize_descripion(self) -> str:
         splitted_text = self.description.split()
@@ -28,7 +37,7 @@ class ProjectObj:
             if index % words_to_newline == 0:
                 splitted_text.insert(index, "\n")
 
-        return " ".join(splitted_text)
+        return " ".join(splitted_text) + "."
 
 
 class ProjectCreator(ProjectObj):

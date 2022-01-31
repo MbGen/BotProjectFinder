@@ -11,4 +11,4 @@ async def add_description(msg: types.Message, state: FSMContext) -> None:
     project_cursor.description = msg.text
     project_cursor.save()
     await ProjectAdd.next()
-    await msg.answer("А теперь напишите требуемое кол\-во участников")
+    await msg.answer("А теперь напишите требуемое кол-во участников")
