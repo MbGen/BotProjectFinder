@@ -1,18 +1,19 @@
-from typing import Final
+from typing import Final, Union
+from models.project import Project
 
 
 class ProjectObj:
-    def __init__(self,
-                 creator: str,
-                 theme: str,
-                 description: str,
-                 current_partners: int,
-                 required_partners) -> None:
-        self.creator = creator
-        self.theme = theme
-        self.description = description
-        self.current_partners = current_partners
-        self.required_partners = required_partners
+    def __init__(self, user_id: str) -> None:
+        try:
+            project_cursor = Project.get(Project.id == user_id)
+        except Exception as e:
+            raise e
+
+        self.creator = project_cursor.creator
+        self.theme = project_cursor.theme
+        self.description = project_cursor.description
+        self.current_partners = project_cursor.current_partners
+        self.required_partners = project_cursor.required_partners
 
     def __repr__(self) -> str:
         pattern = "<strong>Создатель - {0}</strong>\n" \
@@ -41,17 +42,8 @@ class ProjectObj:
 
 
 class ProjectCreator(ProjectObj):
-    def __init__(self,
-                 creator,
-                 theme,
-                 description,
-                 current_partners,
-                 required_partners) -> None:
-        super().__init__(creator,
-                         theme,
-                         description,
-                         current_partners,
-                         required_partners)
+    def __init__(self, user_id: str) -> None:
+        super().__init__(user_id=user_id)
 
 
 class ProjectSearcher(ProjectObj):

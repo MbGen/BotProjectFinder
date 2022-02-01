@@ -1,6 +1,8 @@
-import logging
+from loguru import logger
+import sys
 
-logging.basicConfig(format=u'%(message)s',
-                    level=logging.INFO,
-                    # level=logging.DEBUG,  # Можно заменить на другой уровень логгирования.
-                    )
+
+logger.add(sys.stderr,
+           format="{time} {level} {message}",
+           level="INFO"
+           )

@@ -12,11 +12,8 @@ searcher_project_callback = inline.callback_data.ProfileCallback.MY_PROJ_SEARCHE
 
 @dp.callback_query_handler(text_contains=creator_project_callback)
 async def get_creator_project(callback_query: types.CallbackQuery) -> None:
-    project_cursor = Project.get(Project.id == callback_query.from_user.id)
-    instance = ProjectCreator(project_cursor.creator,
-                              project_cursor.theme,
-                              project_cursor.description,
-                              project_cursor.current_partners,
-                              project_cursor.required_partners)
-
-    await bot.send_message(callback_query.from_user.id, instance)
+    try:
+        instance = ProjectCreator(callback_query.from_user.id)
+        await bot.send_message(callback_query.from_user.id, instance)
+    except Project.DoesNotExist:
+        await bot.send_message(callback_query.from_user.id, "Проекта нет, можете его создать в своем профиле")
