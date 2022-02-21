@@ -9,7 +9,7 @@ bots_chosen = inline.callback_data.ThemeCreateCallback.CREATE_BOTS
 web_chosen = inline.callback_data.ThemeCreateCallback.CREATE_WEB
 
 
-@dp.callback_query_handler(text_contains=bots_chosen)
+@dp.callback_query_handler(lambda call: call.data == bots_chosen)
 async def bots_theme(callback_query: types.CallbackQuery) -> None:
     project_cursor = Project.get(Project.id == callback_query.from_user.id)
     project_cursor.theme = bots_chosen
@@ -18,7 +18,7 @@ async def bots_theme(callback_query: types.CallbackQuery) -> None:
     await ProjectAdd.waiting_for_description.set()
 
 
-@dp.callback_query_handler(text_contains=web_chosen)
+@dp.callback_query_handler(lambda call: call.data == web_chosen)
 async def web_theme(callback_query: types.CallbackQuery) -> None:
     project_cursor = Project.get(Project.id == callback_query.from_user.id)
     project_cursor.theme = web_chosen

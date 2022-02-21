@@ -37,7 +37,7 @@ class MenuKB:
     @staticmethod
     def get_menu_kb() -> InlineKeyboardMarkup:
         main_menu_btns = (
-            InlineKeyboardButton(text="📜Список проектов", callback_data=MenuCallback.LIST_OF_PROJECTS),
+            InlineKeyboardButton(text="📜Список проектов", callback_data=MenuCallback.FIND_PROJECT),
             InlineKeyboardButton(text="🙋‍♂️Профиль", callback_data=MenuCallback.PROFILE)
         )
 
@@ -69,6 +69,13 @@ class ProfileKB:
         searcher_kb = InlineKeyboardMarkup(row_width=2).add(*searcher_btns)
         return searcher_kb
 
+    @staticmethod
+    def get_edit_project_kb() -> InlineKeyboardMarkup:
+        edit_btn = InlineKeyboardButton(text="Изменить проект", callback_data=ProfileCallback.CREATE_PROJ)
+
+        edit_kb = InlineKeyboardMarkup(row_width=1).add(edit_btn)
+        return edit_kb
+
 
 class ProjectCreationKB:
     @staticmethod
@@ -80,3 +87,16 @@ class ProjectCreationKB:
 
         themes_kb = InlineKeyboardMarkup(row_width=2).add(*themes_btns)
         return themes_kb
+
+
+class ProjectSearchKB:
+    @staticmethod
+    async def get_navigation_kb() -> InlineKeyboardMarkup:
+        navigation_btns = (
+            InlineKeyboardButton(text="⬅️Прерыдущий", callback_data=SearchProjectCallback.PREVIOUS),
+            InlineKeyboardButton(text="📧Подать заявку", callback_data=SearchProjectCallback.REQUEST),
+            InlineKeyboardButton(text="➡️Далее", callback_data=SearchProjectCallback.NEXT),
+        )
+
+        navigation_kb = InlineKeyboardMarkup(row_width=1).add(*navigation_btns)
+        return navigation_kb

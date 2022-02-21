@@ -9,7 +9,7 @@ callback_bots_chosen = inline.callback_data.ThemeAuthCallback.AUTH_BOTS
 callback_web_chosen = inline.callback_data.ThemeAuthCallback.AUTH_WEB
 
 
-@dp.callback_query_handler(text_contains=callback_bots_chosen)
+@dp.callback_query_handler(lambda call: call.data == callback_bots_chosen)
 async def bots_theme(callback_query: types.CallbackQuery) -> None:
     user_cursor = User.get(User.id == callback_query.from_user.id) 
     user_cursor.theme = callback_bots_chosen
@@ -19,7 +19,7 @@ async def bots_theme(callback_query: types.CallbackQuery) -> None:
     await Authorization.waiting_for_skills.set()
 
 
-@dp.callback_query_handler(text_contains=callback_web_chosen)
+@dp.callback_query_handler(lambda call: call.data == callback_web_chosen)
 async def web_theme(callback_query: types.CallbackQuery) -> None:
     user_cursor = User.get(User.id == callback_query.from_user.id) 
     user_cursor.theme = callback_web_chosen

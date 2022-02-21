@@ -8,7 +8,8 @@ __all__ = [
     "ThemeCreateCallback",
     "TypeOfUserCallback",
     "MenuCallback",
-    "ProfileCallback"
+    "ProfileCallback",
+    "SearchProjectCallback"
 ]
 
 
@@ -25,8 +26,8 @@ class ThemeAuthCallback:
 
 @final
 class ThemeCreateCallback:
-    CREATE_BOTS: Final[str] = "бот проект"
-    CREATE_WEB: Final[str] = "веб проект"
+    CREATE_BOTS: Final[str] = "проект о ботах"
+    CREATE_WEB: Final[str] = "проект о вебе"
 
 
 @final
@@ -37,7 +38,7 @@ class TypeOfUserCallback:
 
 @final
 class MenuCallback:
-    LIST_OF_PROJECTS: Final[str] = "lst_of_proj"
+    FIND_PROJECT: Final[str] = "lst_of_proj"
     MAIN_MENU: Final[str] = "main_menu"
     PROFILE: Final[str] = "profile"
 
@@ -48,3 +49,10 @@ class ProfileCallback:
     CREATE_PROJ: Final[str] = "create_proj"
     MY_PROJ_SEARCHER: Final[str] = "my_proj_searcher"
     MY_PROJ_CREATOR: Final[str] = "my_proj_creator"
+
+
+@final
+class SearchProjectCallback:
+    PREVIOUS: Final[str] = "previous"
+    REQUEST: Final[str] = "request"
+    NEXT: Final[str] = "next"
